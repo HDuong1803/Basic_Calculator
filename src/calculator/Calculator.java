@@ -48,12 +48,12 @@ public class Calculator extends JFrame implements ActionListener {
         itmAbout.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(rootPane, "This is a calculator.\nVersion 1.1.0", "About", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(rootPane, "This is a calculator", "About", JOptionPane.INFORMATION_MESSAGE);
             }
         });
     }
 
-    //Panel container textFielt
+    
     private JPanel createPanelTxtArea(){
         plDisplay = new JPanel(new GridLayout(1, 1));
         txtAreaDisplay = new JTextArea(4, 3);
@@ -67,7 +67,6 @@ public class Calculator extends JFrame implements ActionListener {
     }
 
 
-    // Panel container Button
     private JPanel createPanelBtn(){
         plButton = new JPanel(new GridLayout(5, 4));
         for(int i=0; i<btnName.length; i++){
@@ -160,19 +159,19 @@ public class Calculator extends JFrame implements ActionListener {
         if(e.getActionCommand()=="÷")
             txtAreaDisplay.append("/");
 
-        //delete
+        
         if(e.getActionCommand().equals("←")){
             String str = txtAreaDisplay.getText();
             if(str.length() != 0)
                 txtAreaDisplay.setText(str.substring(0, str.length()-1));
         }
 
-        //delete all
+
         if(e.getActionCommand().equals("AC")){
             txtAreaDisplay.setText("");
         }
 
-        // result
+
         if (e.getActionCommand().equals("=")) {
             infix = txtAreaDisplay.getText();
             InfixToPostfix calculator = new InfixToPostfix();
