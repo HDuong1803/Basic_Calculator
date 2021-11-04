@@ -5,10 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
-
-
 public class InfixToPostfix {
-
     private int getPreference(char c){
         if(c=='+'|| c=='-') return 1;
         else if(c=='*' || c=='/') return 2;
@@ -64,23 +61,22 @@ public class InfixToPostfix {
                         postFixList.add(stack.pop()+"");
                     }
                 }
-            }else if(word=='+' || word=='-' || word=='*' || word=='/'){
+            } else if(word=='+' || word=='-' || word=='*' || word=='/'){
                 flag = false;
                 if(stack.isEmpty()){
                     stack.push(word);
-                }
-                else{
+                } else {
                     while(!stack.isEmpty() && getPreference(stack.peek())>=getPreference(word)){
                         postFixList.add(stack.pop()+"");
                     }
                     stack.push(word);
                 }
-            }else{
+            } else {
                 if(flag){
                     String lastNumber = postFixList.get(postFixList.size()-1);
                     lastNumber+=word;
                     postFixList.set(postFixList.size()-1, lastNumber);
-                }else
+                } else
                     postFixList.add(word+"");
                 flag = true;
             }
